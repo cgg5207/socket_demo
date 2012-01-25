@@ -1,9 +1,10 @@
 class Demo  
   constructor: ->
+    addr = "192.168.1.3"
     if WebSocket?
-      window.socket = new WebSocket("ws://192.168.1.3:7070")    
+      window.socket = new WebSocket("ws://#{addr}:7070")    
     else
-      window.socket = new MozWebSocket("ws://192.168.1.3:7070")
+      window.socket = new MozWebSocket("ws://#{addr}:7070")
       
     window.socket.onopen = ->
       window.socket.send(JSON.stringify({kind: "register"}))
@@ -14,8 +15,7 @@ class Demo
         switch data["kind"]
           when "registered"
             $('#me').text(data["id"])
-            
-            $.each(data["world"],  (key, color) ->
+            $.each(data["world"], (key, color) ->
               console.log(color)
               window.add_player key, color)
           when "add"
@@ -34,7 +34,6 @@ window.set_color = (id, color) ->
   $("##{id}").removeClass("red")
   $("##{id}").removeClass("green")
   $("##{id}").addClass(color)
-  
 
 $(document).ready ->
   demo = new Demo
