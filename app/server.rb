@@ -31,7 +31,7 @@ class Server
           case incoming["kind"]
           when "register"
             socket.send(register_message(id).to_json)
-            broadcast(id)            
+            broadcast(id)
           else
             if incoming["color"]
               color = incoming["color"]
@@ -39,7 +39,7 @@ class Server
               puts "setting #{id} to #{color}"
               @sockets[socket]["color"] = color
               send_to_all(message)
-            end           
+            end
           end
         end
 
