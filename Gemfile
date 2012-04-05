@@ -16,3 +16,5 @@ gem 'guard'
 gem 'guard-coffeescript'
 gem 'growl'
 gem 'rb-fsevent'
+
+gem 'ruby-debug19' # 1.9.2
