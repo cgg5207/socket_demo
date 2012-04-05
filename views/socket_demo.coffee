@@ -1,6 +1,6 @@
 class Demo  
   constructor: ->
-    addr = "192.168.1.3"
+    addr = "192.168.1.114"
     if WebSocket?
       window.socket = new WebSocket("ws://#{addr}:7070")    
     else
