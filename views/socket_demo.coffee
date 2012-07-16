@@ -1,10 +1,12 @@
 class Demo  
   constructor: ->
-    addr = "192.168.1.114"
+    addr = "localhost"
+    port = 80
+    url = "ws://#{addr}:#{port}"
     if WebSocket?
-      window.socket = new WebSocket("ws://#{addr}:7070")    
+      window.socket = new WebSocket(url)    
     else
-      window.socket = new MozWebSocket("ws://#{addr}:7070")
+      window.socket = new MozWebSocket(url)
       
     window.socket.onopen = ->
       window.socket.send(JSON.stringify({kind: "register"}))

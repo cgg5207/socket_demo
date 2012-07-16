@@ -4,17 +4,18 @@ require 'em-websocket'
 require 'active_support'
 require 'json'
 require 'ap'
+require 'rack/websocket'
 
 $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/../app")
 
-class Server
-  def initialize(host = '0.0.0.0', port = 7070)
+class Server < Rack::WebSocket::Application
+  def initialize(host = '0.0.0.0', port = 80)
     @host = host
     @port = port
     @@max_id = 0
   end
 
-  def run
+  def call
     EM.run do
       @sockets = {}
       EM::WebSocket.start(:host => @host, :port => @port) do |socket|
