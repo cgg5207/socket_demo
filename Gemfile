@@ -19,11 +19,3 @@ gem 'rb-fsevent'
 gem 'thin'
 gem 'pry'
 gem 'websocket-rack'
-
-group :development, :test do
-  if RUBY_VERSION =~ /1.9/ gem 'ruby-debug19'
-  else
-    gem 'ruby-debug'
-  end
-end
-
